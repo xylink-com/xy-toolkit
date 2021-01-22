@@ -23,7 +23,7 @@
     "node_modules",
     "lib",
     "output",
-    "test"
+    "_test_"
   ],
   "include": [
     "src/**/*"
