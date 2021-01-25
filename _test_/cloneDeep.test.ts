@@ -1,10 +1,124 @@
+const cloneDeep = require('../src/cloneDeep').default;
 
-test('array is [1, 2, 3, 4]', () => {
-  const cloneDeep = require('../src/cloneDeep').default;
-  const array = [1, 2, 3, 4];
-  const clonedArray = cloneDeep(array);
+// 测试null
+test('clonedNull is null', () => {
+  const clonedNull = cloneDeep((null));
 
-  clonedArray[0] = 100;
+  expect(clonedNull).toBeNull;
+});
 
-  expect(array).toEqual([1, 2, 3, 4]);
+// 测试正则
+test('clonedReg is /^123abc$/ig', () => {
+  const reg = /^123abc$/ig;
+  const clonedReg = cloneDeep(reg);
+
+  expect(clonedReg).toEqual(/^123abc$/ig);
+});
+
+// 测试Date
+test('clonedDate is new Date(2021, 1, 22)', () => {
+  const date = new Date(2021, 1, 22);
+  const clonedDate = cloneDeep(date);
+
+  expect(clonedDate).toEqual(new Date(2021, 1, 22));
+});
+
+// 测试function
+test('clonedFun is fun', () => {
+  const fun = () => {
+    return "fun";
+  };
+  const clonedFun = cloneDeep(fun);
+
+  expect(clonedFun).toEqual(fun);
+});
+
+// 测试symbol
+test('obj is { [Symbol()]: "Hello" }', () => {
+  const symbol = Symbol();
+  const obj = {
+    [symbol]: 'Hello'
+  };
+  const clonedObj = cloneDeep(obj);
+
+  clonedObj[symbol] = 'World';
+
+  expect(obj).toEqual({ [symbol]: 'Hello' });
+  expect(clonedObj).toEqual({ [symbol]: 'World' });
+});
+
+// 测试相同引用
+test('obj is {item1, { age: 1 }, item2: {age: 1}}', () => {
+  const obj = {}; 
+  const obj1 = { age: 10 };
+
+  obj['item1'] = obj1;
+  obj['item2'] = obj1;
+
+  const clonedObj = cloneDeep(obj);
+
+  obj['item1'].age = 1;
+  clonedObj['item1'].age = 2;
+
+  expect(obj).toEqual({item1: { age: 1 }, item2: { age: 1 }});
+  expect(clonedObj).toEqual({item1: { age: 2 }, item2: { age: 2}});
+});
+
+// 测试循环引用
+test('output obj1 and conedObj', () => {
+  const obj1 = { a: {} };
+  const obj2 = {
+    b: obj1
+  };
+
+  obj1.a = obj2;
+  
+  const clonedObj = cloneDeep(obj1);
+
+  console.log('obj1:', obj1); // 输出: { a: { b: [Circular] } } 
+  console.log('clonedObj:', clonedObj); // 输出: { a: { b: [Circular] } }
+});
+
+// 数组、对象组合
+test('test array combine with object', () => {
+  const arr = [
+    {
+      students: [
+        {
+          name: 'Li Lei',
+          age: 12
+        }, 
+        {
+          name: 'Wang Meimei',
+          age: 11
+        }
+      ]
+    },
+    {
+      teachers: [
+        {
+          title: 'Teacher Wang',
+          project: 'English'
+        },
+        {
+          title: 'Teacher Li',
+          project: 'Math'
+        }
+      ],
+    },
+    {
+      school: {
+        name: 'Hope Primary School',
+        location: 'Shaanxi',
+      }
+    }
+  ];
+
+  const clonedArr = cloneDeep((arr));
+
+  arr[2].school.location = 'Shanxi';
+  clonedArr[0].students[0].name = 'Li Ming';
+
+  expect(arr[0].students[0].name).toBe('Li Lei');
+  expect(clonedArr[2].school.location).toBe('Shaanxi');
 });

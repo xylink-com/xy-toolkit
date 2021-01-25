@@ -5,9 +5,8 @@
  * Last modified  : 2021-01-22 18:21:38
  */
 
-
 // 获取数据类型
-const getType = (value: any) => {
+const getType = (value) => {
   const type = Object.prototype.toString.call(value);
 
   return type.match(/\[object (.*)\]/)[1];
@@ -15,7 +14,7 @@ const getType = (value: any) => {
 
 const cloneDeep = (value) => {
   // 存放已递归到的目标对象
-  const clonedObj = [];
+  const clonedObjs = [];
 
   const baseClone = (value) => {
     // 如果不是引用类型，就返回原数据
@@ -32,37 +31,36 @@ const cloneDeep = (value) => {
       return value;
     }
 
-    const length = clonedObj.length;
+    const length = clonedObjs.length;
     const obj = getType(value) === 'Array' ? [] : {};
 
     for (let i = 0 ; i < length; i++) {
-      if (clonedObj[i].target === value) {
-        return clonedObj[i].copyTarget;
+      if (clonedObjs[i].value === value) {
+        return clonedObjs[i].copyTarget;
       }
     }
     
-    clonedObj.push({value, copyTarget: obj});
+    clonedObjs.push({value, copyTarget: obj});
+    // Object.keys: 返回一个数组，包括对象自身的所有可枚举属性（不含Symbol属性）的键名
     Object.keys(value).forEach(key => { 
-      if(obj[key]) { 
+      if (obj[key]) { 
         return; 
       } 
       obj[key] = baseClone(value[key]);
-    }); 
+    });
+
+    // Object.getOwnPropertySymbols: 返回一个数组，包含对象自身的所有Symbol属性的键名
+    Object.getOwnPropertySymbols(value).forEach(key => {
+      if (obj[key]) {
+        return;
+      }
+      obj[key] = baseClone(value[key]);
+    });
+
     return obj;
   };
   
   return baseClone(value);
 };
-
-const array = [
-  {
-    name: 'a',
-    age: 1
-  },
-  {
-    name: 'b',
-    age: 2
-  }
-];
 
 export default cloneDeep;
