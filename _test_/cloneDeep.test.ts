@@ -122,3 +122,45 @@ test('test array combine with object', () => {
   expect(arr[0].students[0].name).toBe('Li Lei');
   expect(clonedArr[2].school.location).toBe('Shaanxi');
 });
+
+// 测试多种数据类型
+test('test multiple data type', () => {
+  const fun = () => {
+    return "fun";
+  };
+  const arr = [
+    [
+      null,
+      /^123abc$/ig,
+      new Date(2021, 1, 22),
+      fun,
+      Symbol('symbol'),
+    ],
+    [
+      'string',
+      123,
+      true,
+      undefined,
+    ],
+    [
+      {
+        object: {
+          types: [
+            'function',
+            'array'
+          ]
+        }
+      }
+    ]
+  ];
+
+  const clonedArr = cloneDeep(arr);
+
+  clonedArr[0][1] = /^abc$/ig;
+  clonedArr[1][2] = false;
+  clonedArr[2][0]['object'].types[0] = 'fun';
+
+  expect(arr[0][1]).toEqual(/^123abc$/ig);
+  expect(arr[1][2]).toBe(true);
+  expect(arr[2][0]['object'].types[0]).toBe('function');
+});
