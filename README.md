@@ -25,7 +25,7 @@
 - [ ] tranlateMoney(fixed);
 - [ ] url parms
 - [ ] mergeDeep
-- [ ] cloneDeep
+- [x] cloneDeep
 - [ ] array/object/mat
 - [ ] native(native-js)(android,ios)
 
