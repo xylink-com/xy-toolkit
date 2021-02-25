@@ -1,7 +1,0 @@
-.DS_Store
-node_modules
-dist
-src/.umi
-lib
-docs
-.umi
