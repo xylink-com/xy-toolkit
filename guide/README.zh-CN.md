@@ -42,7 +42,7 @@ footer: Open-source MIT Licensed | Copyright © 2020-xylink
 - [ ] tranlateMoney(fixed);
 - [ ] url parms
 - [ ] mergeDeep
-- [ ] cloneDeep
+- [x] cloneDeep
 - [ ] array/object/mat
 - [ ] native(native-js)(android,ios)
 
