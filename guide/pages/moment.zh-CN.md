@@ -1,5 +1,6 @@
 # Moment 时间格式化工具
 
+类 moment API 的时间格式化小工具，支持获取和设置格式化时间串等功能。
 ## Using Moment
 
 ```ts

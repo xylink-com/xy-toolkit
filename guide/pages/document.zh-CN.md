@@ -31,3 +31,4 @@ import { sotre, fscreen, ... } from @xylink/toolkit;
 
 1. [store](/zh-CN/pages/store)
 2. [fscreen](/zh-CN/pages/fscreen)
+3. [cloneDeep](/zh-CN/pages/cloneDeep)
