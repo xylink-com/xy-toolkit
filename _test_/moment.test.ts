@@ -1,4 +1,4 @@
-const moment = require("../src/time/moment").default;
+const moment = require("../src/moment").default;
 // moment().locale("en_US");
 // moment().locale("zh_TW");
 describe("momentJS", () => {
@@ -33,7 +33,7 @@ describe("momentJS", () => {
 
 describe("momentJS", () => {
   // it("format time", () => {
-  //   console.log(moment().format(undefined, "YYYY-MM-DD HH时mm分ss秒"));
+    console.log(moment().format("YYYY-MM-DD HH时mm分s秒 ms毫秒"));
   //   console.log(moment().daysInMonth());
   //   console.log(moment().daysInMonth(2020, 2));
   //   console.log(moment().daysInMonth(2021, 2));

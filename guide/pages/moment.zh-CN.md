@@ -1,5 +1,6 @@
 # Moment 时间格式化工具
 
+类 moment API 的时间格式化小工具，支持获取和设置格式化时间串等功能。
 ## Using Moment
 
 ```ts
@@ -76,6 +77,7 @@ const now = moment().format('X');
 | m | 5 | Minutes |
 | ss | 04 | Seconds with 2 digit|
 | s | 4 | Seconds |
+| ms | 57 | millSeconds |
 | ww | 1..53| Week of year |
 | ll | am..pm 上午..下午 | Locale time |
 

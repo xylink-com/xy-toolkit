@@ -25,9 +25,10 @@
 - [ ] tranlateMoney(fixed);
 - [x] url parms
 - [ ] mergeDeep
-- [ ] cloneDeep
+- [x] cloneDeep
 - [ ] array/object/mat
 - [ ] native(native-js)(android,ios)
+- [x] sign
 
 ## License
 

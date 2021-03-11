@@ -8,6 +8,7 @@ import {
 import fscreen from "./screen";
 import store from "./store";
 import urlParam from "./urlParam";
+import cloneDeep from "./cloneDeep";
 
 export {
   getChromeVersion,
@@ -16,5 +17,6 @@ export {
   getSafariVersion,
   fscreen,
   store,
-  urlParam
+  urlParam,
+  cloneDeep
 };
