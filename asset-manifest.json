@@ -1,6 +1,6 @@
 {
-  "guide__README.en-US.md.js": "/toolkit/guide__README.en-US.md.f0dc1cae.async.js",
-  "guide__README.zh-CN.md.js": "/toolkit/guide__README.zh-CN.md.af44c424.async.js",
+  "guide__README.en-US.md.js": "/toolkit/guide__README.en-US.md.d833878a.async.js",
+  "guide__README.zh-CN.md.js": "/toolkit/guide__README.zh-CN.md.450a8978.async.js",
   "guide__pages__cloneDeep.zh-CN.md.js": "/toolkit/guide__pages__cloneDeep.zh-CN.md.e7bba829.async.js",
   "guide__pages__document.en-US.md.js": "/toolkit/guide__pages__document.en-US.md.d8f5725c.async.js",
   "guide__pages__document.zh-CN.md.js": "/toolkit/guide__pages__document.zh-CN.md.ff5fb0a1.async.js",
@@ -16,7 +16,7 @@
   "guide__pages__store.zh-CN.md.js": "/toolkit/guide__pages__store.zh-CN.md.9960222d.async.js",
   "guide__pages__urlParam.zh-CN.md.js": "/toolkit/guide__pages__urlParam.zh-CN.md.f6e5c5ab.async.js",
   "umi.css": "/toolkit/umi.a6075f0e.css",
-  "umi.js": "/toolkit/umi.bc2a545e.js",
+  "umi.js": "/toolkit/umi.ff8e6906.js",
   "vendors~wrappers.css": "/toolkit/vendors~wrappers.e8056aba.chunk.css",
   "vendors~wrappers.js": "/toolkit/vendors~wrappers.208cd836.async.js",
   "wrappers.js": "/toolkit/wrappers.e281ac46.async.js",
