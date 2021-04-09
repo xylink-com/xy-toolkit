@@ -1,4 +1,4 @@
-const moment = require("../src/moment").default;
+import moment from "../../src/moment";
 // moment().locale("en_US");
 // moment().locale("zh_TW");
 describe("momentJS", () => {

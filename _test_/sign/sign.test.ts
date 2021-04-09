@@ -1,4 +1,4 @@
-const getSign = require("../src/sign").default;
+import getSign from "../src/sign";
 
 const obj = {
   method: "POST",

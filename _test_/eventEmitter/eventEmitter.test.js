@@ -1,4 +1,4 @@
-const EventEmitter = require("../src/eventEmitter").default;
+import EventEmitter from "../../src/eventEmitter";
 
 describe("On and off listener", () => {
   it("event will be emit with listening", async () => {

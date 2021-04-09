@@ -1,4 +1,4 @@
-const cloneDeep = require('../src/cloneDeep').default;
+import cloneDeep from '../../src/cloneDeep';
 
 // 测试null
 test('clonedNull is null', () => {

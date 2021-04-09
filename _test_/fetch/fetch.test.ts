@@ -1,4 +1,4 @@
-import fetch from "../src/fetch";
+import fetch from "../../src/fetch";
 
 describe("create fetch object", () => {
   it("create empty obj", () => {

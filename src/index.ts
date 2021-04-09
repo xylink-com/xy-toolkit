@@ -3,12 +3,12 @@ import {
   getEdgeVersion,
   getPlatform,
   getSafariVersion,
-} from "./browser";
+} from "./browser/browser";
 
-import fscreen from "./screen";
-import store from "./store";
-import urlParam from "./urlParam";
-import cloneDeep from "./cloneDeep";
+import fscreen from "./screen/screen";
+import store from "./store/store";
+import urlParam from "./url/urlParam";
+import cloneDeep from "./clone/cloneDeep";
 
 export {
   getChromeVersion,
@@ -18,5 +18,5 @@ export {
   fscreen,
   store,
   urlParam,
-  cloneDeep
+  cloneDeep,
 };
