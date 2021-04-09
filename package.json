@@ -10,7 +10,9 @@
     "pretest": "npm run build",
     "test": "jest",
     "build:doc": "dumi build",
-    "pub:doc": "gh-pages -d docs"
+    "pub:doc": "gh-pages -d docs",
+    "pub": "yarn publish",
+    "pub:beta": "yarn publish --tag beta"
   },
   "files": [
     "dist"
@@ -40,7 +42,7 @@
   },
   "dependencies": {
     "crypto-js": "^4.0.0",
-    "whatwg-fetch": "^3.5.0"
+    "whatwg-fetch": "^3.6.2"
   },
   "jest": {
     "moduleFileExtensions": [

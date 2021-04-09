@@ -25,25 +25,12 @@ export interface FetchProxyConfig {
 // see https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 export type Method =
   | "get"
-  | "GET"
   | "delete"
-  | "DELETE"
   | "head"
-  | "HEAD"
   | "options"
-  | "OPTIONS"
   | "post"
-  | "POST"
   | "put"
-  | "PUT"
-  | "patch"
-  | "PATCH"
-  | "purge"
-  | "PURGE"
-  | "link"
-  | "LINK"
-  | "unlink"
-  | "UNLINK";
+  | "patch";
 
 export type ResponseType =
   | "arraybuffer"
@@ -54,21 +41,40 @@ export type ResponseType =
   | "stream";
 
 export interface FetchOptions {
+  // `url` 是用于请求的服务器 URL
   url?: string;
+  // `method` 是创建请求时使用的方法
   method?: Method;
+  // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
   baseURL?: string;
-  dataTransfer?: (res: any) => any;
+  // `transformRequest` 允许在向服务器发送前，修改请求数据
+  // 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
   transformRequest?: FetchTransformer | FetchTransformer[];
+  // `transformResponse` 在传递给 then/catch 前，允许修改响应数据
   transformResponse?: FetchTransformer | FetchTransformer[];
-  headers?: any;
+  headers?: any; // `headers` 是即将被发送的自定义请求头
+  // `params` 是即将与请求一起发送的 URL 参数
+  // 必须是一个无格式对象(plain object)或 URLSearchParams 对象
   params?: any;
-  paramsSerializer?: (params: any) => string;
+  // `data` 是作为请求主体被发送的数据
+  // 只适用于这些请求方法 'PUT', 'POST', 和 'PATCH'
+  // 在没有设置 `transformRequest` 时，必须是以下类型之一：
+  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
+  // - 浏览器专属：FormData, File, Blob
+  // - Node 专属： Stream
+  // paramsSerializer?: (params: any) => string;
   data?: any;
+  // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)
+  // 如果请求超过 `timeout` 的时间，请求将被中断
   timeout?: number;
-  timeoutErrorMessage?: string;
-  withCredentials?: boolean;
+  // withCredentials?: boolean;
+  // `adapter` 允许自定义处理请求，以使测试更轻松
+  // 返回一个 promise 并应用一个有效的响应
   adapter?: FetchAdapter;
   auth?: FetchBasicCredentials;
+  // It's not natively supported in fetch as the API is a purely network-layer API with no dependencies on being in a web browser.
+  // see: https://github.com/whatwg/fetch/issues/16
+  // data type will depend on responseType and response headers of content-type.
   responseType?: ResponseType;
   xsrfCookieName?: string;
   xsrfHeaderName?: string;
@@ -84,27 +90,27 @@ export interface FetchOptions {
   proxy?: FetchProxyConfig | false;
   cancelToken?: CancelToken;
   decompress?: boolean;
+  // Follow are native options of fetch, see: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch or https://javascript.info/fetch-api
+  mode?: "cors" | "no-cors" | "same-origin";
+  credentials?: "omit" | "same-origin" | "include";
+  redirect?: "follow" | "error" | "manual";
+  referrer?: string;
+  referrerPolicy?:
+    | "no-referrer"
+    | "no-referrer-when-downgrade"
+    | "same-origin"
+    | "origin"
+    | "strict-origin"
+    | "origin-when-cross-origin"
+    | "strict-origin-when-cross-origin"
+    | "unsafe-url";
+  integrity?: string;
+  keepalive?: boolean;
+  cache?: "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached";
+  signal?: AbortController;
 }
 
-export interface FetchResponse<T = any> {
-  data: T;
-  status: number;
-  statusText: string;
-  headers: any;
-  config: FetchOptions;
-  request?: any;
-}
-
-export interface FetchError<T = any> extends Error {
-  config: FetchOptions;
-  code?: string;
-  request?: any;
-  response?: FetchResponse<T>;
-  isFetchError: boolean;
-  toJSON: () => object;
-}
-
-export interface FetchPromise<T = any> extends Promise<FetchResponse<T>> {}
+export type FetchErrorType = "FETCH_ERROR" | "DATA_ERROR" | "TIMEOUT_ERROR";
 
 export interface CancelStatic {
   new (message?: string): Cancel;
@@ -142,54 +148,13 @@ export interface FetchInterceptorManager<V> {
   eject(id: number): void;
 }
 
-export interface FetchInstance {
-  (config: FetchOptions): FetchPromise;
-  (url: string, config?: FetchOptions): FetchPromise;
-  defaults: FetchOptions;
-  interceptors: {
-    request: FetchInterceptorManager<FetchOptions>;
-    response: FetchInterceptorManager<FetchResponse>;
-  };
-  getUri(config?: FetchOptions): string;
-  request<T = any, R = FetchResponse<T>>(config: FetchOptions): Promise<R>;
-  get<T = any, R = FetchResponse<T>>(
-    url: string,
-    config?: FetchOptions
-  ): Promise<R>;
-  delete<T = any, R = FetchResponse<T>>(
-    url: string,
-    config?: FetchOptions
-  ): Promise<R>;
-  head<T = any, R = FetchResponse<T>>(
-    url: string,
-    config?: FetchOptions
-  ): Promise<R>;
-  options<T = any, R = FetchResponse<T>>(
-    url: string,
-    config?: FetchOptions
-  ): Promise<R>;
-  post<T = any, R = FetchResponse<T>>(
-    url: string,
-    data?: any,
-    config?: FetchOptions
-  ): Promise<R>;
-  put<T = any, R = FetchResponse<T>>(
-    url: string,
-    data?: any,
-    config?: FetchOptions
-  ): Promise<R>;
-  patch<T = any, R = FetchResponse<T>>(
-    url: string,
-    data?: any,
-    config?: FetchOptions
-  ): Promise<R>;
-}
+// export interface FetchStatic extends FetchInstance {
+//   create(config?: FetchOptions): FetchInstance;
+//   Cancel: CancelStatic;
+//   CancelToken: CancelTokenStatic;
+//   isCancel(value: any): boolean;
+//   all<T>(values: (T | Promise<T>)[]): Promise<T[]>;
+//   spread<T, R>(callback: (...args: T[]) => R): (array: T[]) => R;
+// }
 
-export interface FetchStatic extends FetchInstance {
-  create(config?: FetchOptions): FetchInstance;
-  Cancel: CancelStatic;
-  CancelToken: CancelTokenStatic;
-  isCancel(value: any): boolean;
-  all<T>(values: (T | Promise<T>)[]): Promise<T[]>;
-  spread<T, R>(callback: (...args: T[]) => R): (array: T[]) => R;
-}
+export interface FetchRequest {}

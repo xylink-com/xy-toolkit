@@ -1,11 +1,14 @@
-import { DefaultConfig } from "./index.type";
+import { FetchOptions } from "./index.type";
 
-const initDefaultOptions: DefaultConfig = {
-  baseURL: "",
+// Default options that works for all request.
+const initDefaultOptions: FetchOptions = {
+  timeout: 10 * 1000,
+  responseType: "json",
 };
 
 const config = {
   initDefaultOptions,
+  postLikeMethods: ["post", "put", "patch"],
 };
 
 export default config;
