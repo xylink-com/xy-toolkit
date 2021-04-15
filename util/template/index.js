@@ -102,15 +102,21 @@ docTemplates.forEach((template) => {
 console.info(
   `Register tool to README with name ${toolName}.Update Readme status if any stage changed.`
 );
-const readme = ["README.md", "README.en-US.md"];
-const readmeRegisterContent = `| ${toolName} |  |  |  |\n`;
+const readme = ["README.md", "README.en-US.md", "README.zh-CN.md"];
+const readmeRegisterContent = `| ${toolName} |  | 未开始 |  |\n`;
+
 readme.forEach((file) => {
-  const readmePath = path.resolve(rootPath, file);
-  if (fs.existsSync(readmePath)) {
-    fs.writeFileSync(readmePath, readmeRegisterContent, {
-      flag: "a",
-    });
-  } else {
-    console.error(`Readme file not exist, path: ${readmePath}`);
-  }
+  const readmePath = [
+    path.resolve(rootPath, file),
+    path.resolve(rootPath, `guide/${file}`),
+  ];
+  readmePath.forEach((path) => {
+    if (fs.existsSync(path)) {
+      fs.writeFileSync(path, readmeRegisterContent, {
+        flag: "a",
+      });
+    } else {
+      // console.error(`Readme file not exist, path: ${path}`);
+    }
+  });
 });

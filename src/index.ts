@@ -20,3 +20,6 @@ export {
   urlParam,
   cloneDeep,
 };
+export {default as Example} from "./example";
+export {default as Example} from "./example";
+export {default as Axios} from "./axios";
