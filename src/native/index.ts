@@ -120,4 +120,5 @@ class Native {
   }
 }
 
-export default new Native();
+export const native: Native = new Native();
+export default Native;

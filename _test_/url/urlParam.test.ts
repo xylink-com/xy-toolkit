@@ -1,4 +1,4 @@
-const urlParam = require("../src/urlParam").default;
+import urlParam from "../src/urlParam";
 
 const url = '?h=www.baidu.com&a=2?b=3&c=4';
 

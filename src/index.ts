@@ -3,7 +3,7 @@ import {
   getEdgeVersion,
   getPlatform,
   getSafariVersion,
-} from "./browser";
+} from "./browser/browser";
 
 import fscreen from "./screen";
 import store from "./store";
@@ -22,3 +22,4 @@ export {
   cloneDeep,
   Socket,
 };
+

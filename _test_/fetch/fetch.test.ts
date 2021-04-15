@@ -1,4 +1,4 @@
-import Fetch from "../src/fetch";
+import fetch from "../../src/fetch";
 
 const fetch = new Fetch({
   responseType: "text",

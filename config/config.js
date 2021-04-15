@@ -41,11 +41,11 @@ export default {
   navs: {
     "zh-CN": [
       null,
-      { title: "GitHub", path: "https://github.com/xylink-com/xy-lodash" },
+      { title: "GitHub", path: "https://github.com/xylink-com/toolkit" },
     ],
     "en-US": [
       null,
-      { title: "GitHub", path: "https://github.com/xylink-com/xy-lodash" },
+      { title: "GitHub", path: "https://github.com/xylink-com/toolkit/blob/master/README.en-US.md" },
     ],
   },
 };

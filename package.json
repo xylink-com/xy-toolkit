@@ -11,8 +11,7 @@
     "test": "jest",
     "build:doc": "dumi build",
     "pub:doc": "gh-pages -d docs",
-    "pub": "yarn publish",
-    "pub:beta": "yarn publish --tag beta"
+    "gen": "node ./util/template/index.js"
   },
   "files": [
     "dist"
@@ -30,6 +29,7 @@
     "@babel/helper-builder-react-jsx-experimental": "^7.12.11",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "colors": "^1.4.0",
     "dumi": "^1.1.5",
     "gh-pages": "^3.1.0",
     "jest": "^26.4.2",

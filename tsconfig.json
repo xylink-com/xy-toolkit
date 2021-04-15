@@ -26,6 +26,7 @@
     "_test_"
   ],
   "include": [
-    "src/**/*"
-, "_test_/moment.test.ts"  ]
+    "src/**/*",
+    "_test_/moment/moment.test.ts"
+  ]
 }
