@@ -4,7 +4,11 @@ EventEmitter 是使用 Map 和 Set 实现的简易版的事件管理器，API �
 
 [NodeJs EventEmitter docs](https://nodejs.org/api/events.html#events_class_eventemitter)
 
-## 使用
+## 何时使用
+
+- 事件管理：事件发布、订阅。
+- 需要对外提供事件处理的场景。
+## 代码演示
 
 ```ts
 import {EventEmitter} from "toolkit";

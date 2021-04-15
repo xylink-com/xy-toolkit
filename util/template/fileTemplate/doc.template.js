@@ -13,6 +13,8 @@ module.exports = (name) => {
 ## 代码演示
 
 ## API
+
+## TODO
 `,
     },
     {
@@ -26,6 +28,8 @@ Some description about your tool...
 ## Examples
 
 ## API
+
+## TODO
 `,
     },
   ];
