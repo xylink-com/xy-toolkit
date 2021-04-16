@@ -2,20 +2,30 @@
 
 通过方法的封装方便快捷的管理 js 与原生部分（android, ios）方法的连通，舍弃手动写代码注册的方法，通过方法自动生成注册减少冗余代码，满足通用方法的使用需求。
 
-## 使用
+## 何时使用
+
+- js 调用 native 方法时的业务封装
+- 自动生成 Native 类和实例方法
+- 配置化的管理实例方法
+## 代码案例
 
 ```ts
-import Native from "toolkit";
-Native.setTitle("hello");
+import { Native } from "toolkit";
+const NativeInstance: Native = new Native();
+NativeInstance.setTitle("hello");
 ```
 
 Native 以实例的方法导出，在项目中维持单例模式。
 
-## 注册通用方法
+更多代码案例请参考：[Native 测试文件](../../../_test_/native/native.test.ts)
+
+## API
+
+### 注册通用方法
 
 通用方法请在'native/native.ts'中注册，方法以 json 的方式管理。
 
-## 参数
+### 参数
 
 | 参数    | 描述                             |
 | ------- | -------------------------------- |
@@ -23,7 +33,7 @@ Native 以实例的方法导出，在项目中维持单例模式。
 | android | 适用于 android 的特殊方法        |
 | ios     | 适用于 ios 的特殊方法            |
 
-## 方法参数
+### 方法参数
 
 可使用的方法类型如下：
 
@@ -39,4 +49,3 @@ object: 对方法进行详细的配置。
 | customAndroidCallback | 自定义 android 的处理方法 | () => string |
 | customIosCallback     | 自定义 ios 的处理方法     | () => string |
 | customErrorHandler    | 自定义 error 的处理方法   | () => string |
-

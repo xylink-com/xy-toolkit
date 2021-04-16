@@ -10,8 +10,25 @@
 - 更舒适的 API
 - 更轻量的工具体积
 
-## 代码演示
+## 代码案例
 
+```ts
+import { fetch } from "toolkit";
+
+const fetch = new Fetch({
+  responseType: "text",
+  timeout: 1000000,
+});
+
+const res = await fetch.get("/user", {
+    baseURL: baseUrl,
+    timeout: 60000,
+    responseType: "json",
+});
+console.log("==>", res);
+```
+
+更多代码案例请参考：[Fetch 测试文件](../../../_test_/fetch/fetch.test.ts)
 
 ## 兼容性
 

@@ -1,22 +1,30 @@
 # Moment 时间格式化工具
 
 类 moment API 的时间格式化小工具，支持获取和设置格式化时间串等功能。
-## Using Moment
+
+## 何时使用
+
+- 时间格式化，支持区域化需求
+- 轻量级工具
+- 类 moment API，简单易用
+## 代码案例
 
 ```ts
 import { moment } from 'toolkit';
 moment().format();
 ```
 
-## Parse
+更多代码案例请参考：[Moment 测试文件](../../../_test_/moment/moment.test.ts)
 
-### now
+## API
+### Parse
+#### now
 
 ```ts
 const now = moment().current();
 ```
 
-### current info
+#### current info
 
 ```ts
 const year = moment().year();
@@ -40,7 +48,7 @@ const now = moment().toString();
 const now = moment().get();
 ```
 
-### format
+#### format
 
 > 获取当前时间的毫秒值
 
@@ -56,30 +64,30 @@ const now = moment().format('X');
 
 > 获取格式化的时间
 
-| Property | Example | Description |
-| -------- | ----------- | ----------- |
-| YYYY | 2021 | 4 digit year |
-| YY | 21 | 2 digit year |
-| Q | 1..4 | Quarter of year |
-| MMMM | Jan..December 一月..十二月 1月..12月 | Locale month number |
-| MM | 01..12 | Month number with 2 digit |
-| M | 1..12 | Month number |
-| DDDD | 1..365 | Day of year |
-| DDD | 1st..31th | Day of month with ordinal |
-| DD | 1..31 | Day of month with 2 digit |
-| D | 1..31 | Day of month |
-| dddd |Mon...Sunday 周一..周六 | Day name in locale|
-| d |1..7 | Day name|
-| HHH | 3(下午) | Locale hour |
-| HH | 01 | Hours with 2 digit |
-| H | 1 | Hours |
-| mm | 05 | Minutes with 2 digit |
-| m | 5 | Minutes |
-| ss | 04 | Seconds with 2 digit|
-| s | 4 | Seconds |
-| ms | 57 | millSeconds |
-| ww | 1..53| Week of year |
-| ll | am..pm 上午..下午 | Locale time |
+| Property | Example                              | Description               |
+| -------- | ------------------------------------ | ------------------------- |
+| YYYY     | 2021                                 | 4 digit year              |
+| YY       | 21                                   | 2 digit year              |
+| Q        | 1..4                                 | Quarter of year           |
+| MMMM     | Jan..December 一月..十二月 1月..12月 | Locale month number       |
+| MM       | 01..12                               | Month number with 2 digit |
+| M        | 1..12                                | Month number              |
+| DDDD     | 1..365                               | Day of year               |
+| DDD      | 1st..31th                            | Day of month with ordinal |
+| DD       | 1..31                                | Day of month with 2 digit |
+| D        | 1..31                                | Day of month              |
+| dddd     | Mon...Sunday 周一..周六              | Day name in locale        |
+| d        | 1..7                                 | Day name                  |
+| HHH      | 3(下午)                              | Locale hour               |
+| HH       | 01                                   | Hours with 2 digit        |
+| H        | 1                                    | Hours                     |
+| mm       | 05                                   | Minutes with 2 digit      |
+| m        | 5                                    | Minutes                   |
+| ss       | 04                                   | Seconds with 2 digit      |
+| s        | 4                                    | Seconds                   |
+| ms       | 57                                   | millSeconds               |
+| ww       | 1..53                                | Week of year              |
+| ll       | am..pm 上午..下午                    | Locale time               |
 
 > 使用方法：
 
@@ -106,3 +114,8 @@ moment().format("YYYY-MM-DD HH时mm分ss秒 ll", 11111111111);
 moment().format("YYYY-MM-DD HH时mm分ss秒 ll", "11111111111");
 moment().format("YYYY-MM-DD HH时mm分ss秒 LL", '2020-12-12 14:14:14');
 ```
+
+## TODO
+
+- [ ] 完善 API
+- [ ] 优化代码

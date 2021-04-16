@@ -30,3 +30,4 @@
 | Websocket         | 封装 WebSocket 模块                                     | 未开始 |                  |
 | Logger            | 本地日志模块                                            | 未开始 |                  |
 | DB                | 本地数据库                                              | 未开始 |                  |
+| HashMap |  | 未开始 |  |

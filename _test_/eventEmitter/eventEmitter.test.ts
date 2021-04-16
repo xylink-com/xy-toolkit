@@ -1,4 +1,4 @@
-import EventEmitter from "../../src/eventEmitter";
+import { EventEmitter } from "../../src";
 
 const eventEmitter = new EventEmitter();
 
@@ -73,10 +73,10 @@ describe("On and off listener", () => {
 
   it("remove all listeners, just like clear.", () => {
     console.log("==>", { listeners: eventEmitter.getListeners("app-quit") });
-    console.log("==>", { listeners: eventEmitter.allListeners("app-quit") });
+    console.log("==>", { listeners: eventEmitter.allListeners() });
     console.log("==>", { listeners: eventEmitter.size() });
     console.log("==>", { listeners: eventEmitter.listenerCount("app-quit") });
-    eventEmitter.removeAllListeners();
+    eventEmitter.removeAllListeners(null);
     console.log("==>", { listeners: eventEmitter.getListeners("app-quit") });
     console.log("==>", { listeners: eventEmitter.listenerCount("app-quit") });
     eventEmitter.emit("app-quit");
@@ -84,6 +84,7 @@ describe("On and off listener", () => {
   });
 
   it("Event listener should work", () => {
+    // newListener 先创建后触发，所以会触发自己
     eventEmitter.on("newListener", (data) => {
       console.log("==>newListener", JSON.stringify(data));
     });

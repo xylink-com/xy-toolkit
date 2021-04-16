@@ -57,7 +57,7 @@ toolTemplates.forEach((template) => {
 // src/index.ts：自动在全局项目中注册导出工具类
 console.info(`Register tool to export of repo ...`);
 const indexFileName = "index.ts";
-const registerContent = `export {default as ${toolName}} from "./${camelCaseToolName}";\n`;
+const registerContent = `export * from "./${camelCaseToolName}";\n`;
 fs.writeFileSync(
   path.resolve(rootPath, `src/${indexFileName}`),
   registerContent,

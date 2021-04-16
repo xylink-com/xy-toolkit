@@ -5,11 +5,10 @@ import {
   getSafariVersion,
 } from "./browser/browser";
 
-import fscreen from "./screen";
-import store from "./store";
-import urlParam from "./urlParam";
-import cloneDeep from "./cloneDeep";
-import Socket from "./socket";
+import fscreen from "./screen/screen";
+import store from "./store/store";
+import urlParam from "./url/urlParam";
+import cloneDeep from "./clone/cloneDeep";
 
 export {
   getChromeVersion,
@@ -20,6 +19,7 @@ export {
   store,
   urlParam,
   cloneDeep,
-  Socket,
 };
 
+export * from "./eventEmitter";
+export * from "./hashMap";

@@ -3,11 +3,12 @@ module.exports = (name) => {
   return [
     {
       fileName: "index.ts",
-      content: `export { default as ${name} } from "./${toolName}.ts";\n`,
+      content: `// export 类、类型、接口
+export { default as ${name} } from "./${toolName}";\n`,
     },
     {
       fileName: `${toolName}.ts`,
-      content: `import config from "./${toolName}.config.ts";
+      content: `import config from "./${toolName}.config";
 
 class ${name} {
   constructor() {
