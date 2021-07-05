@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "start": "dumi dev",
     "build": "rollup -c",

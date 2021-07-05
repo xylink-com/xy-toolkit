@@ -4,7 +4,7 @@
  * @author jinghui-Luo
  *
  * Created at     : 2020-12-04 15:37:02
- * Last modified  : 2021-07-05 16:22:30
+ * Last modified  : 2021-07-05 17:20:28
  */
 
 const browser = function () {
@@ -110,10 +110,10 @@ class FScreen {
    * 初始化配置全屏参数
    *
    * @public
-   * @param ele 请求全屏的元素
-   * @param cb 元素全屏状态回调事件
+   * @param { HTMLElement } ele 请求全屏的元素
+   * @param { Function } cb 元素全屏状态回调事件
    */
-  public init(ele: any, cb?: (status: any) => void) {
+  public init(ele: any | HTMLElement, cb?: (e: any) => void) {
     this.eles.set(ele, { ele, cb, isFullScreen: false });
 
     if (!this.isInit) {
@@ -245,8 +245,14 @@ class FScreen {
    * @param { HTMLElement } ele 需要退出全屏的元素
    */
   public exit(ele: any) {
-    if (this.eles.has(ele)) {
-      document[this.browser.exitFullscreen]();
+    const hasEle = this.eles.has(ele);
+
+    if (hasEle) {
+      const item = this.eles.get(ele);
+
+      if (item.isFullScreen) {
+        document[this.browser.exitFullscreen]();
+      }
     }
   }
 }
