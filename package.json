@@ -14,7 +14,7 @@
     "pub:doc": "gh-pages -d docs"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
